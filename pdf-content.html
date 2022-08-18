@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="author" content="CodexWorld">
+				<link rel="icon" href="https://www.codexworld.com/wp-content/uploads/2014/09/favicon.ico" type="image/x-icon" />
+		        <!--iOS/android/handheld specific -->	
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Convert HTML to PDF in PHP with Dompdf - CodexWorld</title>
+    <link rel="stylesheet" type="text/css" media="all" href="https://www.codexworld.com/wp-content/themes/techblog/style.css" />
+	<link rel="pingback" href="https://www.codexworld.com/xmlrpc.php" />
+        <link href="https://www.codexworld.com/wp-content/themes/techblog/css/bootstrap.css" rel="stylesheet">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v19.5.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="Convert HTML to PDF using PHP - Simple script to convert HTML to PDF in PHP with Dompdf. Generate PDF from HTML page using dompdf library and PHP." />
+	<link rel="canonical" href="https://www.codexworld.com/convert-html-to-pdf-php-dompdf/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Convert HTML to PDF in PHP with Dompdf - CodexWorld" />
+	<meta property="og:description" content="Convert HTML to PDF using PHP - Simple script to convert HTML to PDF in PHP with Dompdf. Generate PDF from HTML page using dompdf library and PHP." />
+	<meta property="og:url" content="https://www.codexworld.com/convert-html-to-pdf-php-dompdf/" />
+	<meta property="og:site_name" content="CodexWorld" />
+	<meta property="article:publisher" content="https://www.facebook.com/codexworld" />
+	<meta property="article:author" content="https://www.facebook.com/codexworld" />
+	<meta property="article:published_time" content="2016-05-12T18:13:16+00:00" />
+	<meta property="article:modified_time" content="2020-04-01T04:39:48+00:00" />
+	<meta property="og:image" content="https://www.codexworld.com/wp-content/uploads/2016/05/convert-html-to-pdf-in-php-with-dompdf-latest-codexworld.png" />
+	<meta property="og:image:width" content="1366" />
+	<meta property="og:image:height" content="768" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="CodexWorld" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@codexworldblog" />
+	<meta name="twitter:site" content="@codexworldblog" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="CodexWorld" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="4 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/","url":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/","name":"Convert HTML to PDF in PHP with Dompdf - CodexWorld","isPartOf":{"@id":"https://www.codexworld.com/#website"},"primaryImageOfPage":{"@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/#primaryimage"},"image":{"@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/#primaryimage"},"thumbnailUrl":"https://www.codexworld.com/wp-content/uploads/2016/05/convert-html-to-pdf-in-php-with-dompdf-latest-codexworld.png","datePublished":"2016-05-12T18:13:16+00:00","dateModified":"2020-04-01T04:39:48+00:00","author":{"@id":"https://www.codexworld.com/#/schema/person/9da51d8fa3cdefeb5ec9c69136d4baf0"},"description":"Convert HTML to PDF using PHP - Simple script to convert HTML to PDF in PHP with Dompdf. Generate PDF from HTML page using dompdf library and PHP.","breadcrumb":{"@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.codexworld.com/convert-html-to-pdf-php-dompdf/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/#primaryimage","url":"https://www.codexworld.com/wp-content/uploads/2016/05/convert-html-to-pdf-in-php-with-dompdf-latest-codexworld.png","contentUrl":"https://www.codexworld.com/wp-content/uploads/2016/05/convert-html-to-pdf-in-php-with-dompdf-latest-codexworld.png","width":1366,"height":768,"caption":"convert-html-to-pdf-in-php-with-dompdf-latest-codexworld"},{"@type":"BreadcrumbList","@id":"https://www.codexworld.com/convert-html-to-pdf-php-dompdf/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.codexworld.com/"},{"@type":"ListItem","position":2,"name":"Convert HTML to PDF in PHP with Dompdf"}]},{"@type":"WebSite","@id":"https://www.codexworld.com/#website","url":"https://www.codexworld.com/","name":"CodexWorld","description":"Programming Blog, Web Development, Tutorials, PHP, MySQL, jQuery, Ajax, WordPress, Drupal, CodeIgniter, CakePHP and Demos","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.codexworld.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Person","@id":"https://www.codexworld.com/#/schema/person/9da51d8fa3cdefeb5ec9c69136d4baf0","name":"CodexWorld","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.codexworld.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/9263b369b46de2b211df693ac52740fb?s=96&r=g","contentUrl":"https://secure.gravatar.com/avatar/9263b369b46de2b211df693ac52740fb?s=96&r=g","caption":"CodexWorld"},"description":"CodexWorld is a programming blog, one-stop destination for web professionals — developers, programmers, freelancers, and site owners.","sameAs":["http://www.codexworld.com","https://www.facebook.com/codexworld","https://twitter.com/codexworldblog"],"url":"https://www.codexworld.com/author/nitya192265/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="CodexWorld &raquo; Feed" href="https://www.codexworld.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CodexWorld &raquo; Comments Feed" href="https://www.codexworld.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CodexWorld &raquo; Convert HTML to PDF in PHP with Dompdf Comments Feed" href="https://www.codexworld.com/convert-html-to-pdf-php-dompdf/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.codexworld.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=9a012605ef3d124705a09229c604379a"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='GoogleFonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C300italic%2Cregular%2Citalic%2C600%2C600italic%7COswald%3A300%2C300italic%2Cregular%2Citalic%2C600%2C600italic&#038;ver=9a012605ef3d124705a09229c604379a#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://www.codexworld.com/wp-includes/css/dist/block-library/style.min.css?ver=9a012605ef3d124705a09229c604379a' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='mediaelement-css'  href='https://www.codexworld.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.16' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css'  href='https://www.codexworld.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=9a012605ef3d124705a09229c604379a' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='https://www.codexworld.com/wp-content/plugins/jetpack/css/jetpack.css?ver=11.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.codexworld.com/wp-content/themes/techblog/js/jquery.min.js?ver=9a012605ef3d124705a09229c604379a' id='jquery-js'></script>
+<script type='text/javascript' src='https://www.codexworld.com/wp-content/themes/techblog/js/jquery-ui.min.js?ver=9a012605ef3d124705a09229c604379a' id='jquery-ui-js'></script>
+<script type='text/javascript' src='https://www.codexworld.com/wp-content/themes/techblog/js/bootstrap.min.js?ver=9a012605ef3d124705a09229c604379a' id='bootstrap-js'></script>
+<link rel="https://api.w.org/" href="https://www.codexworld.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.codexworld.com/wp-json/wp/v2/posts/1523" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.codexworld.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.codexworld.com/wp-includes/wlwmanifest.xml" /> 
+<!--Theme by CodexWorld.com-->
+<link rel='shortlink' href='https://wp.me/p6bxIh-oz' />
+<link rel="alternate" type="application/json+oembed" href="https://www.codexworld.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.codexworld.com%2Fconvert-html-to-pdf-php-dompdf%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.codexworld.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.codexworld.com%2Fconvert-html-to-pdf-php-dompdf%2F&#038;format=xml" />
+<style>img#wpstats{display:none}</style>
+	<link rel="icon" href="https://www.codexworld.com/wp-content/uploads/2020/04/favicon.ico" sizes="32x32" />
+<link rel="icon" href="https://www.codexworld.com/wp-content/uploads/2020/04/favicon.ico" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.codexworld.com/wp-content/uploads/2020/04/favicon.ico" />
+<meta name="msapplication-TileImage" content="https://www.codexworld.com/wp-content/uploads/2020/04/favicon.ico" />
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55035394-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-55035394-1');
+</script>
+
+    
+    <!--<script data-ad-client="ca-pub-5750766974376423" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5750766974376423"
+     crossorigin="anonymous"></script>
+    
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+    
+</head>
+
+<body class="post-template-default single single-post postid-1523 single-format-standard cat-4-id">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://www.codexworld.com/" title="CodexWorld Programming Blog">
+                								<img src="https://www.codexworld.com/wp-content/uploads/2014/09/codexworld-logo.png" alt="CodexWorld" />
+					  	
+               	</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                				<ul id="menu-navigation-menus" class="nav navbar-nav"><li id="menu-item-1571" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown"><a title="Web Development Tutorials" href="https://www.codexworld.com/tutorials" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+<ul class="dropdown-menu">
+	<li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="PHP  tutorials" href="https://www.codexworld.com/php/">PHP</a></li>	<li id="menu-item-125" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="WordPress tutorials" href="https://www.codexworld.com/wordpress/">WordPress</a></li>	<li id="menu-item-285" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Drupal tutorials" href="https://www.codexworld.com/drupal/">Drupal</a></li>	<li id="menu-item-195" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="CodeIgniter  tutorials" href="https://www.codexworld.com/codeigniter/">CodeIgniter</a></li>	<li id="menu-item-344" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="CakePHP Tutorials" href="https://www.codexworld.com/cakephp/">CakePHP</a></li><!--.dropdown-->
+</ul>
+</li><li id="menu-item-1021" class="menu-item menu-item-type-custom menu-item-object-custom"><a title="How to Guides on Web Development" href="https://www.codexworld.com/how-to/">How To</a></li><li id="menu-item-311" class="menu-item menu-item-type-custom menu-item-object-custom"><a title="Tutorials Demos" href="http://demos.codexworld.com/">Demos</a></li><li id="menu-item-2446" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Buy PHP Scripts, Code, Projects for Web Development" href="https://www.codexworld.com/scripts/">Scripts</a></li><li id="menu-item-1953" class="menu-item menu-item-type-post_type_archive menu-item-object-deals"><a title="Deals, Discount, Coupon on Web Hosting, Themes, and Services" href="https://www.codexworld.com/deals/">Deals</a></li><li id="menu-item-1572" class="menu-item menu-item-type-post_type menu-item-object-page"><a title="Web Services" href="https://www.codexworld.com/web-services/">Services</a></li><li id="menu-item-1418" class="menu-item menu-item-type-custom menu-item-object-custom"><a title="Free Online Web Tools" target="_blank" href="http://www.xwebtools.com">Web Tools</a></li></ul>                <ul class="nav navbar-nav navbar-right">
+                    <a class="nav-chat-link cspt" href="javascript:void(0);" title="Submit Support Request" data-toggle="modal" data-target="#hireModal"></a>
+                    <!--<a class="nav-chat-link" href="https://m.me/codexworld" title="Chat with Support Team" target="_blank"></a>-->
+                	<form name="googleForm" action="https://www.codexworld.com/search" class="navbar-form navbar-left">
+                    <div class="nav-search-el">
+               		<button type="submit" class="btn"> <span class="glyphicon glyphicon-search search-icon"></span></button></div>
+                    <input name="q" id="q" type="text" class="search-input-box" placeholder="Search tutorials" class="form-control" >
+                    </form>
+             	</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container --> 
+    </nav>
+    <div class="bar-header"><!-- CodexWorld_HeaderTop_Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5750766974376423"
+     data-ad-slot="4551219686"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>	
+ 	<div class="container"><div class="row">
+	<div class="col-lg-8">
+	    	            <div class="breadcrumb"><a href="https://www.codexworld.com" rel="nofollow">Home</a>&nbsp;&nbsp;&#187;&nbsp;&nbsp;<a href="https://www.codexworld.com/tutorials/php/" rel="nofollow">PHP</a> &nbsp;&nbsp;&#187;&nbsp;&nbsp; Convert HTML to PDF in PHP with Dompdf</div>
+                <h1 class="single">Convert HTML to PDF in PHP with Dompdf</h1>
+        <hr class="postmeta">
+        <div class="post_comment_social">
+            <div class="post-meta">
+                <span>By: CodexWorld</span><span>In: <a href="https://www.codexworld.com/tutorials/php/" alt="PHP">PHP</a></span><span>Last Updated:&nbsp;Apr 1, 2020            </div>
+            <div class="socialicons">
+				<a href="javascript:void(0);" class="btn btn-success ask" title="Submit request for support" data-toggle="modal" data-target="#hireModal">Support Request</a>
+				<a href="https://www.codexqa.com/questions/ask?reflink=https://www.codexworld.com/convert-html-to-pdf-php-dompdf/" class="btn btn-primary ask" title="Ask questions about this script" target="_blank">Ask Question</a>
+                <span class="socialspace"><a href="javascript:void(0)" class="icon-fb" onclick="javascript:generic_social_share('http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.codexworld.com%2Fconvert-html-to-pdf-php-dompdf%2F')" title="Facebook"><i class="icon"></i>Share</a></span>
+                <span class="socialspace"><a href="javascript:void(0)" class="icon-tw" onclick="javascript:generic_social_share('http://twitter.com/share?text=Convert HTML to PDF in PHP with Dompdf&amp;url=https://www.codexworld.com/convert-html-to-pdf-php-dompdf/')" title="Twitter"><i class="icon"></i>Tweet</a></span>
+                <span class="socialspace secondary-shares"><a href="javascript:void(0)" class="icon-linked_in" onclick="javascript:generic_social_share('http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.codexworld.com%2Fconvert-html-to-pdf-php-dompdf%2F')"><i class="icon"></i></a></span>
+            </div>
+        </div>
+        <hr>
+        <div class="post_content">
+		<div class="img_center videoContainer"><iframe width="870" height="392" src="https://www.youtube.com/embed/GHjW6EKaEaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>        <div class="bar-content"><!-- CodexWorld_PageTop_Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5750766974376423"
+     data-ad-slot="2558361600"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>        <p><p>PDF is a file format created by Adobe Systems for illustrating text and images in a fixed-layout document. PDF is used to downloading the bunch of data or text content in the web application. PDF file format is the perfect choice to download the text or HTML content in a file. At the time of download web page content as a PDF file, it requires converting HTML to PDF. In this tutorial, we will show you how to convert HTML to PDF and <b>generate PDF file using PHP</b>.</p>
+<p>Dompdf is a PHP library that provides a simple way to convert HTML to PDF document. Using the Dompdf library you can easily generate PDF from the HTML page in PHP. The example code will help you to implement PDF generation functionality in the web application and make it simple to <b>convert HTML to PDF</b> in PHP with Dompdf.</p>
+<h2>Dompdf Installation and Setup</h2>
+<p>Download stable release of dompdf from <a href="https://github.com/dompdf/dompdf/releases" target="_blank" rel="noopener noreferrer">GitHub</a>. Extract the downloaded dompdf archive version and place it to the directory where you want to use Dompdf. </p>
+<p><span class="note">Note that:</span> You don&#8217;t need to download the Dompdf library separately, all the required files are included in our source code package.</p>
+<h2>Instantiate Dompdf Class</h2>
+<p>To use the Dompdf class, you need to include the autoloader in PHP script. Use the following PHP code to instantiate and use the dompdf class.</p>
+<pre><span style="color: #FF8000">//&nbsp;Include&nbsp;autoloader <br /></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'dompdf/autoload.inc.php'</span><span style="color: #007700">; <br /> <br /></span><span style="color: #FF8000">//&nbsp;Reference&nbsp;the&nbsp;Dompdf&nbsp;namespace <br /></span><span style="color: #007700">use&nbsp;</span><span style="color: #0000BB">Dompdf</span><span style="color: #007700">\</span><span style="color: #0000BB">Dompdf</span><span style="color: #007700">; <br /> <br /></span><span style="color: #FF8000">//&nbsp;Instantiate&nbsp;and&nbsp;use&nbsp;the&nbsp;dompdf&nbsp;class <br /></span><span style="color: #0000BB">$dompdf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Dompdf</span><span style="color: #007700">();</span></pre>
+<h2>Basic Usage (Convert HTML to PDF)</h2>
+<p>The following example shows how to use Dompdf to convert HTML and generate PDF with minimal configuration.</p>
+<ul class="bullet_disk_list">
+<li>Specify the HTML content in <b>loadHtml()</b> method of Dompdf class.</li>
+<li>Render HTML as PDF using <b>render()</b> method.</li>
+<li>Output the generated PDF to Browser using <b>stream()</b> method.</li>
+</ul>
+<pre><span style="color: #FF8000">//&nbsp;Load&nbsp;HTML&nbsp;content <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadHtml</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;h1&gt;Welcome&nbsp;to&nbsp;CodexWorld.com&lt;/h1&gt;'</span><span style="color: #007700">); <br /> <br /></span><span style="color: #FF8000">//&nbsp;(Optional)&nbsp;Setup&nbsp;the&nbsp;paper&nbsp;size&nbsp;and&nbsp;orientation <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPaper</span><span style="color: #007700">(</span><span style="color: #DD0000">'A4'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'landscape'</span><span style="color: #007700">); <br /> <br /></span><span style="color: #FF8000">//&nbsp;Render&nbsp;the&nbsp;HTML&nbsp;as&nbsp;PDF <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">render</span><span style="color: #007700">(); <br /> <br /></span><span style="color: #FF8000">//&nbsp;Output&nbsp;the&nbsp;generated&nbsp;PDF&nbsp;to&nbsp;Browser <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stream</span><span style="color: #007700">();</span></pre>
+<h2>Advanced Usage</h2>
+<p>With the Dompdf library, you can easily enhance the functionality of the PDF creation. The following code generates PDF from an HTML file (<code>pdf-content.html</code>).</p>
+<ul class="bullet_disk_list">
+<li>Get content from HTML file using <b>file_get_contents()</b> function in PHP.</li>
+<li>Load HTML content using <b>loadHtml()</b> method of Dompdf class.</li>
+<li>Control the PDF output using <b>stream()</b> function of Dompdf class.
+<ul></ul>
+<li><code>$filename</code> &#8211; (string) Name of the PDF file.</li>
+<li><code>$options</code> &#8211; (array) Header options.</li>
+<li><code>Attachment</code> &#8211; 1 = download and 0 = preview</li>
+</ul>
+</li>
+</ul>
+<pre><span style="color: #FF8000">//&nbsp;Load&nbsp;content&nbsp;from&nbsp;html&nbsp;file <br /></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"pdf-content.html"</span><span style="color: #007700">); <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadHtml</span><span style="color: #007700">(</span><span style="color: #0000BB">$html</span><span style="color: #007700">); <br /> <br /></span><span style="color: #FF8000">//&nbsp;(Optional)&nbsp;Setup&nbsp;the&nbsp;paper&nbsp;size&nbsp;and&nbsp;orientation <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPaper</span><span style="color: #007700">(</span><span style="color: #DD0000">'A4'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'landscape'</span><span style="color: #007700">); <br /> <br /></span><span style="color: #FF8000">//&nbsp;Render&nbsp;the&nbsp;HTML&nbsp;as&nbsp;PDF <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">render</span><span style="color: #007700">(); <br /> <br /></span><span style="color: #FF8000">//&nbsp;Output&nbsp;the&nbsp;generated&nbsp;PDF&nbsp;(1&nbsp;=&nbsp;download&nbsp;and&nbsp;0&nbsp;=&nbsp;preview) <br /></span><span style="color: #0000BB">$dompdf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stream</span><span style="color: #007700">(</span><span style="color: #DD0000">"codexworld"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"Attachment"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">));</span></pre>
+<h2>Dompdf Useful Methods</h2>
+<p>Dompdf library provides various methods and options to configure the PDF creation. Some of the useful methods of Dompdf class are given below that are commonly used to integrate HTML to PDF functionality.</p>
+<p><b>loadHtml():</b> Loads HTML content.</p>
+<ul class="bullet_disk_list">
+<li>$str (string) &#8211; Required. Specify HTML to load.</li>
+<li>$encoding (string) &#8211; Optional. Specify encoding.</li>
+</ul>
+<p><b>loadHtmlFile():</b> Loads content from an HTML file.</p>
+<ul class="bullet_disk_list">
+<li>$file (string) &#8211; Required. Specify filename or url to load.</li>
+</ul>
+<p><b>output():</b> Returns the PDF as a string.</p>
+<ul class="bullet_disk_list">
+<li>$options (array) &#8211; Optional. Specify whether content stream compression will enable. (compress => 1 or 0)</li>
+</ul>
+<p><b>render():</b> Renders the HTML to PDF.</p>
+<p><b>setBasePath():</b> Sets the base path to include external stylesheets and images.</p>
+<ul class="bullet_disk_list">
+<li>$basePath (string) &#8211; The base path to be used when loading the external resources URLs.</li>
+</ul>
+<p><b>setPaper():</b> Sets the paper size &#038; orientation.</p>
+<ul class="bullet_disk_list">
+<li>$size (string|array) &#8211; &apos;letter&apos;, &apos;legal&apos;, &apos;A4&apos;, etc.</li>
+<li>$orientation (string) &#8211; &apos;portrait&apos; or &apos;landscape&apos;.</li>
+</ul>
+<p><b>stream():</b> Streams the PDF to the client.</p>
+<ul class="bullet_disk_list">
+<li>$filename (string) &#8211; Specify name of the file to be streamed (without .pdf extension).
+<li>$options (array) &#8211;
+<ul>
+<li>&apos;compress&apos; => 1 or 0 &#8211; enable content stream compression.</li>
+<li>&apos;Attachment&apos; => 1 = download or 0 = preview</li>
+</ul>
+</li>
+</ul>
+<h2>Conclusion</h2>
+<p>In this tutorial, we have tried to provide an easy way to <b>convert HTML to PDF with Dompdf</b> using PHP. Our example code shows the most used configuration option to generate PDF in PHP. You can easily extend the functionality using Dompdf configuration options as per your needs. To get all required files including the Dompdf library, download the source code.</p>
+</p>
+        <p class="donateTxt">Are you want to get implementation help, or modify or enhance the functionality of this script? <a href="javascript:void(0);" style="color:#f92d50;font-style: italic;" data-toggle="modal" data-target="#requestModal">Submit Paid Service Request</a></p>
+		<p class="askTxt">If you have any questions about this script, submit it to our QA community - <a href="https://www.codexqa.com/questions/ask?reflink=https://www.codexworld.com/convert-html-to-pdf-php-dompdf/" class="ask-qa" title="Ask questions about this script" target="_blank">Ask Question</a></p>
+                <div class="img_center demo-links" id="ProjectDemoDownload">
+		<a id="DownloadProject" class="btn_link green" href="https://www.codexworld.com/downloads/convert-html-to-pdf-php-dompdf"><i class="glyphicon glyphicon-download"></i>Download Source Code</a><a id="LiveDemo" class="btn_link green" href="http://demos.codexworld.com/convert-html-to-pdf-php-dompdf/" target="_blank" ><i class="glyphicon glyphicon-eye-open"></i>View Demo</a>        </div>
+                </div>
+        <div class="details-page-ad-bottom"><!-- CodexWorld_PostPageBottom_300x250 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-5750766974376423"
+     data-ad-slot="7191687280"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>        <!-- Author Box Start -->
+        		<!-- Author Box end -->
+                <div class="codex-end">
+            <div class="article-nav">
+                <div class="article-nav__link-container article-nav__prev">
+                                        <a class="article-nav__link" title="Get Google Maps as an Image using Google Static Maps API" href="https://www.codexworld.com/google-maps-image-using-google-static-maps-api/">
+                        <div class="article-nav__link-text-container"><span class="article-nav__subtitle">Previous</span>
+                        <div class="article-nav__row">
+                            <div class="article-nav__icon"><i class="glyphicon glyphicon-arrow-left"></i></div>
+                            <div class="article-nav__link-title">Get Google Maps as an Image using Google Static Maps API</div>
+                        </div>
+                        </div>
+                    </a>
+                                    </div>
+                <div class="article-nav__link-container article-nav__next">
+                                        <a class="article-nav__link" title="Multi-select Dropdown List with Checkbox using jQuery" href="https://www.codexworld.com/multi-select-dropdown-list-with-checkbox-jquery/">
+                        <div class="article-nav__link-text-container"><span class="article-nav__subtitle">Next</span>
+                        <div class="article-nav__row">
+                            <div class="article-nav__link-title">Multi-select Dropdown List with Checkbox using jQuery</div>
+                            <div class="article-nav__icon"><i class="glyphicon glyphicon-arrow-right"></i></div>
+                        </div>
+                        </div>
+                    </a>
+                                    </div>
+            </div>
+        </div>
+    
+    
+        <!--<div class="recomend-head"><h4>Recommended Tutorials For You</h4></div>-->
+        <div class="bar-content">
+			<!-- CodexWorldMultiplexResponsive -->
+			<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-format="autorelaxed"
+				data-ad-client="ca-pub-5750766974376423"
+				data-ad-slot="8485897432"></ins>
+		   <script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+		   </script>
+        </div>
+		
+    
+        <!-- You can start editing here. -->
+<div class="total-comments comment-respond"><h2><span class="comment-count">7 Comments</span></h2></div>
+<div id="comments">
+	<ol class="commentlist clearfix">
+			<li class="comment even thread-even depth-1" id="li-comment-69990" class="comment">
+		<div id="comment-69990" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Debabrata Roy Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>Hi codex world. I&#8217;m able to create pdf at runtime &amp; even saving it to server.<br />
+I don&#8217;t want to open it, just saving the data as a pdf on server.<br />
+The problem is, i can&#8217;t set default padding &amp; margin. How to that?<br />
+Please reply as soon as possible.<br />
+Thanks in advance.</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>November 24, 2018 at 8:21 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-55478" class="comment">
+		<div id="comment-55478" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Arpit Shah Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>I want to download pdf on button click not on load.</p>
+<p>Is that possible?</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>April 3, 2018 at 10:20 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-54325" class="comment">
+		<div id="comment-54325" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Parth Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>how to use php file at a time of view the pdf</p>
+<p>i want to use php file instead of html file</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>February 23, 2018 at 8:24 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-51392" class="comment">
+		<div id="comment-51392" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Koushik Basu Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>how to enable css float in this new version of dom pdf?</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>November 7, 2017 at 7:25 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-48534" class="comment">
+		<div id="comment-48534" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Darshan Kini Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>how to use bootstrap library with it?</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>August 2, 2017 at 12:10 PM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-48271" class="comment">
+		<div id="comment-48271" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Shelu Nagori Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>IS there any way to disable download and print option in PDF view</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>July 25, 2017 at 7:03 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-40817" class="comment">
+		<div id="comment-40817" style="position:relative;" class="comment-body">
+			<div class="comment-author vcard">
+								                <div class="comment-author-name"><span class="fn">Md Hoq Said...</span></div>
+			</div>
+			<div class="comment_text_area">
+									
+				<div class="commentmetadata text">
+					<p><p>Hello Support Team,</p>
+<p>    I want to convert html content with QR code  to pdf .Please helf me. Thanks</p>
+</p>
+                    <div class="comment-meta"><div class="date"><i class="icon-time"></i>February 9, 2017 at 10:02 AM</div></div>
+				</div>	
+                
+							</div>
+		</div>
+	</li>
+</li><!-- #comment-## -->
+	</ol>
+</div>
+<div class="commentPagination">
+</div>
+<div id="respond" class="comment-respond page-content clearfix">
+    <div class="boxedtitle page-title"><h2>Leave a reply</h2></div>
+    	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"></h3><form action="https://www.codexworld.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><div id="respond-textarea"><p class="comment-form-comment"><label class="required" for="comment">Comment<span>*</span></label><textarea  id="comment" name="comment" cols="58" rows="8" aria-required="true" required></textarea></p></div><div id="respond-inputs" class="clearfix"><p >
+                  <label class="required" for="author">Your Name<span>*</span></label>
+									<input id="author" name="author" type="text" value="" size=""  aria-required="true" required /></p>
+<p>
+                  <label class="required" for="email">Your Email<span>*</span></label>
+									<input id="email" name="email" type="text" value="" size=""  aria-required="true" required /></p>
+<p class="last">
+                  <label class="required" for="url">Your Website</label>
+									<input id="url" name="url" type="text" value="" size="" />
+									</p></div>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='1523' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="0737552751" /></p><p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="137"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	</div>
+
+                        
+        
+        <!-- Footer Sticky Premium Script bar -->
+                
+        
+                
+	</div>
+<!-- Request Modal -->
+<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Submit Your Requirements (price starts from $10)
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+            	<p class="reqStatusMsg"></p>
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="reqName">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="reqName" placeholder="Your Name" required=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="reqEmail">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="reqEmail" placeholder="Your Email" required=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="reqMessage">Requirement</label>
+                    <div class="col-sm-10">
+                    	<textarea class="form-control" id="reqMessage" placeholder="Your Requirement"></textarea>
+                    </div>
+                  </div>
+                                  </form>   
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitRequest()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function submitRequest(){
+	jQuery('.reqStatusMsg').html('');
+	var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+	var name = jQuery('#reqName').val();
+	var email = jQuery('#reqEmail').val();
+	var message = jQuery('#reqMessage').val();
+	var postTitle = 'Convert HTML to PDF in PHP with Dompdf';
+	var postLink = 'https://www.codexworld.com/convert-html-to-pdf-php-dompdf/';
+	if(name.trim() == ''){
+		alert('Please enter your name.');
+		jQuery('#reqName').focus();
+		return false;	
+	}else if(email.trim() == ''){
+		alert('Please enter your email.');
+		jQuery('#reqEmail').focus();
+		return false;	
+	}else if(email.trim() != '' && !reg.test(email)){
+		alert('Please enter valid email.');
+		jQuery('#reqEmail').focus();
+		return false;	
+	}else if(message.trim() == ''){
+		alert('Please enter the summary of your requirement.');
+		jQuery('#reqMessage').focus();
+		return false;	
+	}else if(message.length < 25){
+		alert('Please enter your requirement in details.');
+		jQuery('#reqMessage').focus();
+		return false;	
+	}else{
+		jQuery.ajax({
+			type:'post',
+			url:'https://www.codexworld.com/wp-content/themes/techblog/ajax_request.php',
+			data:'name='+name+'&email='+email+'&message='+message+'&postTitle='+postTitle+'&postLink='+postLink+'&requestSubmit=1',
+			success:function(msg){
+				if(msg == 'ok'){
+					jQuery('#reqName').val('');
+					jQuery('#reqEmail').val('');
+					jQuery('#reqMessage').val('');
+					jQuery('.reqStatusMsg').html('<span style="color:green;font-size:16px;">Your request has been submitted successfully. We\'ll get back to you soon.</span>');	
+				}else{
+					jQuery('.reqStatusMsg').html('<span style="color:red;font-size:16px;">Some problem occurred, please try again.</span>');
+				}
+			}
+		});
+	}
+}
+</script>
+
+<div class="col-lg-4">
+<div class="SidebarBox SidebarBox_subscribe"><h5>SUBSCRIBE FOR FREE NEWSLETTER</h5><div class="btntEmailsub">    <form class="emailSubscribeFormHome" onsubmit="return false;">
+        <input id="subinput" name="email" onblur="if (this.value == &quot;&quot;) {this.value = &quot;Enter your email...&quot;;}" onfocus="if (this.value == &quot;Enter your email...&quot;) {this.value = &quot;&quot;}" type="text" value="Enter your email...">
+		<button class="sub-btn subscribeBtnHome button" onclick="emailSubscribeHome()">Subscribe</button>
+    </form>
+    
+    <div class="subSocialIcons social-icons-news"><ul><li class="facebook"><a href="https://www.facebook.com/codexworld" title="Like CW on Facebook" target="_blank">Facebook</a></li><li class="twitter"><a href="https://twitter.com/codexworldweb" title="Follow CW on Twitter" target="_blank">Twitter</a></li><li class="linkedin"><a href="https://www.linkedin.com/company/codexworld" title="Follow CW on LinkedIn" target="_blank">LinkedIn</a></li><li class="pinterest"><a href="https://www.pinterest.com/codexworld" title="Follow CW on Pinterest" target="_blank">Pinterest</a></li><li class="youtube"><a href="https://www.youtube.com/codexworld" title="Subscribe HTT on YouTube" target="_blank">YouTube</a></li><li class="rss"><a href="https://feeds.feedburner.com/codexworld" title="Subscribe HTT RSS Feeds" target="_blank">RSS Feed</a></li></ul></div><div class="hire"><a href="javascript:void(0);" data-toggle="modal" data-target="#hireModal">Connect with Support Team</a></div></div></div><div class="well widget-sidebar adsense_widget"><!-- CodexWorld_SideBar_300x600 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-5750766974376423"
+     data-ad-slot="2378344300"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="well widget-sidebar"><h4>TRENDING TUTORIALS</h4><div class="textwidget popular_post_widget"><ul>  <li><a title="Upload and Store Image File in Database using PHP and MySQL" href="https://www.codexworld.com/upload-store-image-file-in-database-using-php-mysql/">Upload and Store Image File in Database using PHP and MySQL</a></li>
+    <li><a title="Convert HTML to PDF using JavaScript" href="https://www.codexworld.com/convert-html-to-pdf-using-javascript-jspdf/">Convert HTML to PDF using JavaScript</a></li>
+    <li><a title="Login with Facebook using PHP" href="https://www.codexworld.com/login-with-facebook-using-php/">Login with Facebook using PHP</a></li>
+    <li><a title="Multi-select Dropdown List with Checkbox using jQuery" href="https://www.codexworld.com/multi-select-dropdown-list-with-checkbox-jquery/">Multi-select Dropdown List with Checkbox using jQuery</a></li>
+    <li><a title="Login with Google Account using PHP" href="https://www.codexworld.com/login-with-google-api-using-php/">Login with Google Account using PHP</a></li>
+    <li><a title="Add Remove Input Fields Dynamically using jQuery" href="https://www.codexworld.com/add-remove-input-fields-dynamically-using-jquery/">Add Remove Input Fields Dynamically using jQuery</a></li>
+    <li><a title="Dynamic Dependent Select Box using jQuery, Ajax and PHP" href="https://www.codexworld.com/dynamic-dependent-select-box-using-jquery-ajax-php/">Dynamic Dependent Select Box using jQuery, Ajax and PHP</a></li>
+    <li><a title="Store and Retrieve Image from MySQL Database using PHP" href="https://www.codexworld.com/store-retrieve-image-from-database-mysql-php/">Store and Retrieve Image from MySQL Database using PHP</a></li>
+  </ul></div></div><div class="well widget-sidebar"><h4>TOPICS<a href="https://www.codexworld.com/tutorial-topics/" class="widgetAllCat label label-warning">all topics</a></h4><div class="row textwidget tabCategory"><ul class="list-unstyled">  <li><a title="PHP" href="https://www.codexworld.com/tutorials/php/">PHP</a></li>
+    <li><a title="CodeIgniter" href="https://www.codexworld.com/tutorials/codeigniter/">CodeIgniter</a></li>
+    <li><a title="WordPress" href="https://www.codexworld.com/tutorials/wordpress/">WordPress</a></li>
+    <li><a title="JavaScript" href="https://www.codexworld.com/tutorials/javascript/">JavaScript</a></li>
+    <li><a title="GoogleMap" href="https://www.codexworld.com/tutorials/googlemap/">GoogleMap</a></li>
+    <li><a title="HTML&amp;CSS" href="https://www.codexworld.com/tutorials/html-css/">HTML&amp;CSS</a></li>
+    <li><a title="Drupal" href="https://www.codexworld.com/tutorials/drupal/">Drupal</a></li>
+    <li><a title="Web Development" href="https://www.codexworld.com/tutorials/web-development/">Web Development</a></li>
+    <li><a title="CakePHP" href="https://www.codexworld.com/tutorials/cakephp/">CakePHP</a></li>
+    <li><a title="Bootstrap" href="https://www.codexworld.com/tutorials/bootstrap/">Bootstrap</a></li>
+    <li><a title="Laravel" href="https://www.codexworld.com/tutorials/laravel/">Laravel</a></li>
+    <li><a title="PayPal" href="https://www.codexworld.com/tutorials/paypal/">PayPal</a></li>
+  </ul></div></div><div class="well widget-sidebar adsense_widget"><!-- CodexWorld_SideBar_Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5750766974376423"
+     data-ad-slot="1548532268"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="well widget-sidebar"><h4>LATEST HOW TO GUIDES</h4><div class="textwidget latest_howto_widget"><ul>  <li><a title="How to Add Reset Button in jQuery UI Datepicker" href="https://www.codexworld.com/how-to/add-reset-button-in-jquery-ui-datepicker/">How to Add Reset Button in jQuery UI Datepicker</a></li>
+    <li><a title="How to Submit Form via Ajax using jQuery" href="https://www.codexworld.com/how-to/submit-form-via-ajax-using-jquery/">How to Submit Form via Ajax using jQuery</a></li>
+    <li><a title="How to Get Time Difference Between Two DateTimes in Minutes using PHP" href="https://www.codexworld.com/how-to/get-time-difference-between-two-dates-in-minutes-using-php/">How to Get Time Difference Between Two DateTimes in Minutes using PHP</a></li>
+    <li><a title="How to Install and Enable Microsoft SQL Server PDO Driver (PDO_SQLSRV) in PHP" href="https://www.codexworld.com/how-to/install-enable-microsoft-sql-server-pdo-driver-pdo_sqlsrv-in-php/">How to Install and Enable Microsoft SQL Server PDO Driver (PDO_SQLSRV) in PHP</a></li>
+    <li><a title="How to Sort Multi-dimensional Array by Key Value in PHP" href="https://www.codexworld.com/how-to/sort-multi-dimensional-array-by-key-value-in-php/">How to Sort Multi-dimensional Array by Key Value in PHP</a></li>
+  </ul></div></div><div class="well widget-sidebar adsense_widget adsSt_widget"><a href="https://www.codexworld.com/scripts/codeigniter-admin-panel/"><img src="https://www.codexworld.com/wp-content/uploads/2017/05/codeigniter-admin-ads-codexworld.png"/></a></div></div></div>
+</div>
+<footer class="footer" role="contentinfo">
+	<div class="footer_info">
+    	<div class="wrapper"> 
+        	        Copyright &copy; 2022 <a href="https://www.codexworld.com/" title="Programming Blog, Web Development, Tutorials, PHP, MySQL, jQuery, Ajax, WordPress, Drupal, CodeIgniter, CakePHP and Demos">CodexWorld</a>. All rights reserved.
+            &nbsp;&nbsp;<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://www.codexworld.com/wp-content/themes/techblog/images/cc-by-nc-nd.png" /></a>
+        	<ul>
+            	<li><a href="https://www.codexworld.com/about-us" title="About Us">About Us</a></li>
+                <li class="sep">|</li>
+                <li><a href="https://www.codexworld.com/privacy-policy" title="Privacy Policy">Privacy Policy</a></li>
+                <li class="sep">|</li>
+                <li><a href="https://www.codexworld.com/terms-conditions" title="Terms and Conditions">Terms & Conditions</a></li>
+                <li class="sep">|</li>
+            	<li><a href="https://www.codexworld.com/write-for-us" title="Write For Us">Write For Us</a></li>
+                <li class="sep">|</li>
+            	<li><a href="https://www.codexworld.com/advertise" title="Advertise on CodexWorld">Advertise</a></li>
+                <li class="sep">|</li>
+            	<li><a href="https://www.codexworld.com/contact" title="Contact">Contact</a></li>
+         	</ul>
+     	</div>
+  	</div> 
+</footer>
+<a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+
+<script defer type='text/javascript' src='https://www.codexworld.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?ver=1658917153' id='akismet-frontend-js'></script>
+<script src='https://stats.wp.com/e-202233.js' defer></script>
+<script>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:11.2',blog:'91409221',post:'1523',tz:'0',srv:'www.codexworld.com'} ]);
+	_stq.push([ 'clickTrackerInit', '91409221', '1523' ]);
+</script>
+
+<!-- Request Modal -->
+<div class="modal fade" id="hireModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">
+                    Connect with our Support Team
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body hireUsModal">
+				<p style="font-size: 15px;font-family: cursive;">Do you want support for the script installation or customization? Submit your request for customization of our scripts, support for the existing web application, and new development service.</p>
+            	<p class="hireStatusMsg"></p>
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="hireName">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="hireName" placeholder="Your Name" required=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="hireEmail">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="hireEmail" placeholder="Your Email" required=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="hireMessage">Requirements</label>
+                    <div class="col-sm-10">
+                    	<textarea class="form-control" id="hireMessage" placeholder="Your Requirements" rows="8"></textarea>
+                    </div>
+                  </div>
+                                  </form>
+				<p style="font-size: 14px;font-style: italic;margin-bottom: 0;">You can connect with the support team directly via email at <b>support@codexworld.com</b> for any inquiry/help.</p>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer" style="margin-top: 0;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitHireRequest();" id="submitHireRequestBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function submitHireRequest(){
+	jQuery('.hireStatusMsg').html('');
+	var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+	var name = jQuery('#hireName').val();
+	var email = jQuery('#hireEmail').val();
+	var message = jQuery('#hireMessage').val();
+	var postTitle = 'Hire Us Request';
+	var postLink = 'https://www.codexworld.com/convert-html-to-pdf-php-dompdf/';
+	if(name.trim() == ''){
+		alert('Please enter your name.');
+		jQuery('#hireName').focus();
+		return false;	
+	}else if(email.trim() == ''){
+		alert('Please enter your email.');
+		jQuery('#hireEmail').focus();
+		return false;	
+	}else if(email.trim() != '' && !reg.test(email)){
+		alert('Please enter valid email.');
+		jQuery('#hireEmail').focus();
+		return false;	
+	}else if(message.trim() == ''){
+		alert('Please enter the summary of your requirement.');
+		jQuery('#hireMessage').focus();
+		return false;	
+	}else if(message.length < 20){
+		alert('Please enter your requirement in details.');
+		jQuery('#hireMessage').focus();
+		return false;	
+	}else{
+		jQuery.ajax({
+			type:'post',
+			url:'https://www.codexworld.com/wp-content/themes/techblog/ajax_request.php',
+			data:'name='+name+'&email='+email+'&message='+message+'&postTitle='+postTitle+'&postLink='+postLink+'&requestSubmit=1',
+			beforeSend: function () {
+                jQuery('#submitHireRequestBtn').attr("disabled","disabled");
+                jQuery('.hireUsModal').css('opacity', '.5');
+            },
+			success:function(msg){
+				if(msg == 'ok'){
+					jQuery('#hireName').val('');
+					jQuery('#hireEmail').val('');
+					jQuery('#hireMessage').val('');
+					jQuery('.hireStatusMsg').html('<span style="color:#34A853;font-size:16px;">Your request has been submitted successfully! Our support team will get in touch with you soon.</span>');	
+				}else{
+					jQuery('.hireStatusMsg').html('<span style="color:#EA4335;font-size:16px;">Some problem occurred, please try again.</span>');
+				}
+				
+				jQuery('#submitHireRequestBtn').removeAttr("disabled");
+                jQuery('.hireUsModal').css('opacity', '');
+			}
+		});
+	}
+}
+</script>
+
+<script type="text/javascript">
+function emailSubscribeHome(){
+		jQuery('.emailSubsMsgHome').remove();
+    var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+		var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    //var name = jQuery('#subsName').val();
+		//var nameLower = name.toLowerCase();
+		var name = '';
+    var email = jQuery('#subinput').val();
+		/*if(name.trim() == '' ){
+			alert('Please enter your name.');
+        	jQuery('#subsName').focus();
+			return false;
+		}else if (!regName.test(name)){
+			alert('Please enter valid name (first & last name).');
+			jQuery('#subsName').focus();
+			return false;
+		}else if (nameLower.indexOf("codex") >= 0 && nameLower.indexOf("world") >= 0){
+			alert('Please enter valid name (first & last name).');
+			jQuery('#subsName').focus();
+			return false;
+		}else */if(email.trim() == '' ){
+			alert('Please enter your email.');
+        	jQuery('#subinput').focus();
+			return false;
+		}else if(email.trim() != '' && !reg.test(email)){
+			alert('Please enter valid email.');
+        	jQuery('#subinput').focus();
+			return false;
+		}else{
+        jQuery.ajax({
+            type:'POST',
+            url:'https://www.codexworld.com/subscription/subscribe.php',
+            dataType: "json",
+            data:{subscribeEmail:1,referrer:'codex_sidebar',name:name,email:email},
+            beforeSend: function () {
+                jQuery('.subscribeBtnHome').attr("disabled","disabled");
+                jQuery('.emailSubscribeFormHome').css('opacity', '.5');
+            },
+            success:function(data){
+                if(data.status == 'ok'){
+                    //jQuery('#subsName').val('');
+                    jQuery('#subinput').val('');
+                    jQuery('.emailSubscribeFormHome').prepend('<p class="emailSubsMsgHome" style="color:#FB4314;">A verification link has been sent to your email address, please check your email and verify.</p>');
+                }else if(data.status == 'ae'){
+                    //jQuery('#subsName').val('');
+                    jQuery('#subinput').val('');
+                    jQuery('.emailSubscribeFormHome').prepend('<p class="emailSubsMsgHome" style="color:#FB4314;">Your email already exists in our subscribers list.</p>');
+                }else{
+                    jQuery('.emailSubscribeFormHome').prepend('<span class="emailSubsMsgHome" style="color:#FB4314;">Some problem occurred, please try again.</span>');
+                }
+                jQuery('.subscribeBtnHome').removeAttr("disabled");
+                jQuery('.emailSubscribeFormHome').css('opacity', '');
+            }
+        });
+    }
+}
+</script>
+<script type="text/javascript" async >function generic_social_share(url){window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');return true;}</script>
+<script type="text/javascript" async >
+/*jQuery(document).ready(function(){
+    var stbox = jQuery(".adsSt_widget");
+    var stt = stbox.offset().top;
+    jQuery(document).scroll(function(){
+        var sta = jQuery(this).scrollTop();
+        if(sta > stt){
+            stbox.css({position:"fixed",top:40});
+        }else{
+            stbox.removeAttr("style");
+        }
+    });
+});*/
+</script>
+
+<script type='text/javascript' async >
+jQuery(document).ready(function(){ jQuery(window).scroll(function(){ if (jQuery(this).scrollTop() > 100) { jQuery('#scroll').fadeIn(); } else { jQuery('#scroll').fadeOut(); } }); jQuery('#scroll').click(function(){ jQuery("html, body").animate({ scrollTop: 0 }, 600); return false; }); });
+</script>
+</body>
+</html>
